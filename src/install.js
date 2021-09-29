@@ -51,7 +51,7 @@ questions.optional = [
 ];
 
 function checkSetupEnv() {
-	winston.message("checking env vars for setup info...");
+	winston.info("checking env vars for setup info...");
 	let envNbbRe = /NBB_(?!DB_).*/
 	let envNbbDbRe = /NBB_DB_.*/
 	let envopts = {
@@ -82,7 +82,7 @@ function checkSetupEnv() {
 	});
 
 	console.log(setupVal)
-	winston.message(`setupVal: ${setupVal}`);
+	winston.info(`setupVal: ${setupVal}`);
 
 	if (setupVal && typeof setupVal === 'object') {
 		if (setupVal['admin:username'] && setupVal['admin:password'] && setupVal['admin:email']) {
