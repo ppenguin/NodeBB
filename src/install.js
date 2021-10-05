@@ -73,7 +73,7 @@ function checkSetupEnv() {
 		NODEBB_DB_SSL: 'ssl',
 	};
 
-	evars.forEach((v) => {
+	Object.keys(evars).forEach((v) => {
 		if (v.match(envNbbRe)) {
 			setupVal[envopts[v]] = evars[v];
 		} else if (v.match(envNbbDbRe)) {
