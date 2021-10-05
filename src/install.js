@@ -50,7 +50,7 @@ questions.optional = [
 ];
 
 function checkSetupEnv() {
-	const setupVal = Object();
+	const setupVal = {};
 	const envNbbRe = /NODEBB_(?!DB_).*/;
 	const envNbbDbRe = /NODEBB_DB_.*/;
 	const evars = nconf.env().get(); // fills evars dict with all env vars
@@ -73,11 +73,11 @@ function checkSetupEnv() {
 		NODEBB_DB_SSL: 'ssl',
 	};
 
-	Object.keys(evars).forEach((v) => {
-		if (v.match(envNbbRe)) {
-			setupVal[envopts[v]] = evars[v];
-		} else if (v.match(envNbbDbRe)) {
-			setupVal[`${evars.NODEBB_DB}:${envopts[v]}`] = evars[v];
+	Object.elements(evars).forEach((kv) => {
+		if (kv[0].match(envNbbRe)) {
+			setupVal[envopts[kv[0]]] = kv[1];
+		} else if (kv[0].match(envNbbDbRe)) {
+			setupVal[`${evars.NODEBB_DB}:${envopts[kv[0]]}`] = kv[1];
 		}
 	});
 
